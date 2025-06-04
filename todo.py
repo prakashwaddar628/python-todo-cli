@@ -20,10 +20,16 @@ def load_tasks():
     return tasks
 
 def save_tasks(tasks):
-    pass
+    """save the tasks into the todofile."""
+    with open(TODO_FILE,  'w') as f:
+        for task in tasks:
+            status_marker = COMPLETE_MARKER if task['complete'] else PENDING_MARKER
+            f.write(f"{status_marker} {task['description']}\n")
 
-def display_tasks(index, tasks):
-    pass
+def display_tasks(index, task):
+    """Formats and prints a single tasks."""
+    status = COMPLETE_MARKER if task['complete'] else PENDING_MARKER
+    print(f"{index}. {status} {task['description']}")
 
 def add_tasks(args):
     pass
